@@ -504,7 +504,17 @@ body {
         padding: 0.5rem;
         z-index: 2001; /* Выше фильтров */
     }
-    
+
+    #searchInput {
+    width: 340px;
+    padding: 0.5rem 2rem 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background-color: #333;
+    color: white;
+    outline: none;
+    transition: all 0.3s ease;
+    }
 
     .filters {
         display: none;
