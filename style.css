@@ -598,8 +598,8 @@ body {
     }
 
     .modal-poster {
-        width: 50%;
-        height: auto;
+        width: 180px;
+        height: 250px;
         max-height: 300px;
         border-radius: 5px;
     }
@@ -612,7 +612,7 @@ body {
     /* Трейлер */
     .trailer-button {
         font-size: 0.8rem;
-        margin-top: -10%;
+        top: 220px;
         left: 14%;
     }
 }
