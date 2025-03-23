@@ -432,3 +432,88 @@ body {
     background: #b20710;
     box-shadow: 0 2px 10px rgba(229, 9, 20, 0.5);
 }
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    /* Верхняя панель */
+    .top-bar {
+        position: relative;
+        padding: 0.5rem 1rem;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+    }
+
+    .filters {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100vh;
+        background: #2d2d2d;
+        flex-direction: column;
+        padding: 1rem;
+        transition: left 0.3s ease;
+        z-index: 2000;
+    }
+
+    .filters.active {
+        left: 0;
+    }
+
+    .filter {
+        margin: 0.5rem 0;
+        padding: 1rem;
+    }
+
+    /* Контент */
+    .content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .movie-poster {
+        height: 200px;
+    }
+
+    /* Модальное окно */
+    .modal {
+        flex-direction: column;
+        width: 95%;
+        padding: 1rem;
+    }
+
+    .modal-poster {
+        width: 100%;
+        height: auto;
+        max-height: 300px;
+    }
+
+    .modal-close {
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+
+    /* Трейлер */
+    .trailer-button {
+        font-size: 0.8rem;
+        padding: 6px 15px;
+    }
+}
+
+/* Для экранов меньше 480px */
+@media (max-width: 480px) {
+    .content {
+        grid-template-columns: 1fr;
+    }
+
+    .movie-poster {
+        height: 150px;
+    }
+}
