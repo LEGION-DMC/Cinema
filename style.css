@@ -4,13 +4,10 @@
     box-sizing: border-box;
     font-family: 'Arial', sans-serif;
 }
-
 body {
     background-color: #1a1a1a;
     color: #fff;
 }
-
-/* Верхняя панель */
 .top-bar {
     position: fixed;
     top: 0;
@@ -23,19 +20,16 @@ body {
     background-color: #2d2d2d;
     z-index: 1000;
 }
-
 .filters {
     display: flex;
     gap: 5px;
 }
-
 .filter {
     padding: 0.5rem 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
 }
-
 .filter::after {
     content: '';
     position: absolute;
@@ -46,23 +40,18 @@ body {
     background-color: #e50914;
     transition: width 0.3s ease;
 }
-
 .filter.active::after,
 .filter:hover::after {
     width: 100%;
 }
-
 .filter.active {
     color: #e50914;
 }
-
-/* Поисковая строка */
 .search-container {
     position: relative;
     display: flex;
     align-items: center;
 }
-
 #searchInput {
     width: 300px;
     padding: 0.5rem 2rem 0.5rem 1rem;
@@ -73,11 +62,9 @@ body {
     outline: none;
     transition: all 0.3s ease;
 }
-
 #searchInput:focus {
     border-color: #e50914;
 }
-
 #clearSearch {
     position: absolute;
     right: 10px;
@@ -88,12 +75,9 @@ body {
     font-size: 1.3rem;
     transition: all 0.3s ease;
 }
-
 #clearSearch:hover {
     color: #e50914;
 }
-
-/* Контент */
 .content {
     margin-top: 40px;
     padding: 2rem;
@@ -101,29 +85,23 @@ body {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 1rem;
 }
-
 .movie-card {
     cursor: pointer;
     transition: transform 0.3s ease;
 }
-
 .movie-card:hover {
     transform: scale(1.05);
 }
-
 .movie-poster {
     width: 100%;
     height: 280px;
     object-fit: cover;
     border-radius: 8px;
 }
-
 .movie-title {
     text-align: center;
     font-size: 15px;
 }
-
-/* Модальное окно */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -136,7 +114,6 @@ body {
     align-items: center;
     z-index: 2000;
 }
-
 .modal {
     background-color: #2d2d2d;
     padding: 1rem;
@@ -147,19 +124,16 @@ body {
     display: flex;
     gap: 10px;
 }
-
 .modal .info {
     font-size: 20px;
     color: red;
 }
-
 .modal .category-label {
     margin-top: 12px;
     font-size: 10px;
     padding: 5px;
     color: white;
 }
-
 .modal-poster {
     width: 250px;
     height: 350px;
@@ -167,7 +141,6 @@ body {
     border-radius: 10px;
     margin-bottom: 50px;
 }
-
 .modal-close {
     position: absolute;
     top: 5px;
@@ -176,11 +149,9 @@ body {
     cursor: pointer;
     transition: color 0.3s ease;
 }
-
 .modal-close:hover {
     color: #e50914;
 }
-
 .watch-button {
     width: 100%;
     padding: 10px;
@@ -193,17 +164,14 @@ body {
     transition: background-color 0.3s ease;
     font-size: 18px;
 }
-
 .watch-button:hover {
     background-color: #b20710;
 }
-
 .seasons-container {
     margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
 }
-
 .episode-button, .part-button {
     padding: 5px;
     background-color: #444;
@@ -213,12 +181,9 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
 .episode-button:hover, .part-button:hover {
     background-color: #e50914;
 }
-
-/* Стили категорий */
 .category-label {
     display: inline-block;
     border-radius: 5px;
@@ -227,7 +192,6 @@ body {
     background-color: grey;
     border-color: #D32F2F;
 }
-
 .season {
     margin-bottom: 5px;
     width: 100%;
@@ -235,19 +199,16 @@ body {
     border-radius: 5px;
     padding: 10px;
 }
-
 .season h4 {
     margin-bottom: 5px;
     font-size: 18px;
     color: white;
 }
-
 .episodes {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 0.3rem;
 }
-
 .franchise-container {
     margin-top: 15px;
     display: grid;
@@ -255,7 +216,6 @@ body {
     gap: 10px;
     width: 100%;
 }
-
 .part-button {
     padding: 10px;
     background-color: #2d2d2d;
@@ -264,44 +224,35 @@ body {
     font-size: 1rem;
     transition: all 0.3s ease;
 }
-
 .part-button:hover {
     background-color: #e50914;
     transform: translateY(-3px);
     box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
 }
-
-/* Адаптивность для франшиз */
 @media (max-width: 768px) {
     .franchise-container {
         grid-template-columns: repeat(3, 1fr);
     }
 }
-
 @media (max-width: 480px) {
     .franchise-container {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
 @media (max-width: 768px) {
     .episodes {
         grid-template-columns: repeat(3, 1fr);
     }
 }
-
 @media (max-width: 480px) {
     .episodes {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
-/* Стили для грядущих релизов */
 .movie-card.riser {
     position: relative;
     overflow: hidden;
 }
-
 .movie-card.riser .poster-overlay {
     position: absolute;
     top: 0;
@@ -316,11 +267,9 @@ body {
     opacity: 0;
     transition: opacity 0.3s ease;
 }
-
 .movie-card.riser:hover .poster-overlay {
     opacity: 1;
 }
-
 .coming-soon {
     color: #fff;
     font-size: 1.5rem;
@@ -329,7 +278,6 @@ body {
     letter-spacing: 2px;
     text-shadow: 0 0 10px rgba(229, 9, 20, 0.8);
 }
-
 .release-date-label {
     background: linear-gradient(45deg, #e50914, #b20710);
     border: 1px solid #ff414d;
@@ -341,8 +289,6 @@ body {
     font-size: 15px;
     color: white;
 }
-
-/* Стили плеера */
 .video-player {
     position: fixed;
     top: 50%;
@@ -356,13 +302,11 @@ body {
     border-radius: 10px;
     overflow: hidden;
 }
-
 #hlsVideo {
     width: 100%;
     height: auto;
     max-height: 80vh;
 }
-
 .close-player {
     position: absolute;
     top: 10px;
@@ -376,7 +320,6 @@ body {
     cursor: pointer;
     z-index: 1000;
 }
-
 .modal .info p {
     margin-top: 10px;
     margin-bottom: 15px;
@@ -384,32 +327,24 @@ body {
     font-size: 14px;
     color: #ddd;
 }
-
 .modal .info p:first-child {
     margin-top: 0;
 }
-
 .modal .info p:last-child {
     margin-bottom: 0;
 }
-
-/* Подзаголовок в карточке */
 .movie-subtitle {
     color: #9999;
     text-align: center;
     margin-top: 3px;
 }
-
-/* Подзаголовок в модальном окне */
 .modal-subtitle {
     font-size: 15px;
     color: #999;
 }
-
 .movie-subtitle {
     font-size: 12px;
 }
-
 .trailer-button {
     position: absolute;
     margin-top: 60px;
@@ -426,7 +361,6 @@ body {
     align-items: center;
     gap: 8px;
 }
-
 .trailer-button:hover {
     background: #b20710;
     box-shadow: 0 2px 10px rgba(229, 9, 20, 0.5);
@@ -436,11 +370,9 @@ body {
 .mobile-menu-btn {
     display: none;
 }
-
 .filters {
     transition: all 0.3s ease;
 }
-
 .filters.active + .filters-overlay {
     position: fixed;
     top: 0;
@@ -450,21 +382,18 @@ body {
     background: rgba(0,0,0,0.5);
     z-index: 1999;
 }
-
 @media (max-width: 768px) {
     /* Верхняя панель */
     .top-bar {
         position: relative;
         padding: 0.5rem 1rem;
     }
-
     .mobile-menu-btn {
         display: block;
         font-size: 1.5rem;
         cursor: pointer;
         padding: 0.5rem;
     }
-
     .filters {
         display: none;
         position: fixed;
@@ -478,60 +407,45 @@ body {
         transition: left 0.3s ease;
         z-index: 2000;
     }
-
     .filters.active {
         left: 0;
     }
-
     .filter {
         margin: 0.5rem 0;
         padding: 1rem;
     }
-
-    /* Контент */
     .content {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
         padding: 1rem;
     }
-
     .movie-poster {
         height: 200px;
     }
-
-    /* Модальное окно */
     .modal {
         flex-direction: column;
         width: 95%;
         padding: 1rem;
     }
-
     .modal-poster {
         width: 100%;
         height: auto;
         max-height: 300px;
     }
-
     .modal-close {
         top: 0.5rem;
         right: 0.5rem;
     }
-
-    /* Трейлер */
     .trailer-button {
         font-size: 0.8rem;
         padding: 6px 15px;
     }
 }
-
-/* Мобильная версия */
 @media (max-width: 768px) {
-    /* Верхняя панель */
     .top-bar {
         position: fixed;
         padding: 0.5rem 1rem;
     }
-
     .mobile-menu-btn {
         display: block;
         font-size: 1.5rem;
@@ -539,7 +453,6 @@ body {
         padding: 0.5rem;
         z-index: 2001; /* Выше фильтров */
     }
-
     .filters {
         display: none;
         position: fixed;
@@ -553,11 +466,9 @@ body {
         transition: left 0.3s ease;
         z-index: 2000;
     }
-
     .filters.active {
         left: 0;
     }
-
     .filters-overlay {
         display: none;
         position: fixed;
@@ -568,47 +479,36 @@ body {
         background: rgba(0,0,0,0.5);
         z-index: 1999;
     }
-
     .filters-overlay.active {
         display: block;
     }
-
     .filter {
         margin: 0.5rem 0;
         padding: 1rem;
     }
-
-    /* Контент */
     .content {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
         padding: 1rem;
-        margin-top: 60px; /* Учитываем высоту верхней панели */
+        margin-top: 60px; 
     }
-
     .movie-poster {
         height: 240px;
     }
-
-    /* Модальное окно */
     .modal {
         flex-direction: column;
         width: 95%;
         padding: 1rem;
     }
-
     .modal-poster {
         width: 100%;
         height: auto;
         max-height: 300px;
     }
-
     .modal-close {
         top: 0.5rem;
         right: 0.5rem;
     }
-
-    /* Трейлер */
     .trailer-button {
         font-size: 0.8rem;
         padding: 6px 15px;
