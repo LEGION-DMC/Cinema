@@ -45,18 +45,13 @@ window.handlePlay = function(url) {
     }
 };
 
-function initApp() {
-    // Добавить обработчик меню
-    document.querySelector('.menu-toggle').addEventListener('click', () => {
-        document.querySelector('.filters').classList.toggle('active');
-    });
-    
-    // Остальной код инициализации
+// Инициализация
+document.addEventListener('DOMContentLoaded', () => {
     renderMovies(movies);
     initFilters();
     initSearch();
     initModal();
-    initVideoPlayer();
+	initVideoPlayer(); // Добавить эту строку
 });
 
 // Рендер карточек
@@ -199,20 +194,4 @@ function showModal(movie) {
     html += '</div>';
     modalContent.innerHTML = html;
     modalOverlay.style.display = 'flex';
-}
-function initMobileMenu() {
-    const menuButton = document.querySelector('.menu-button');
-    const filtersWrapper = document.querySelector('.filters-wrapper');
-    
-    menuButton.addEventListener('click', () => {
-        filtersWrapper.classList.toggle('active');
-    });
-    
-    // Закрытие меню при клике вне его
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.filters-wrapper') && 
-            !e.target.closest('.menu-button')) {
-            filtersWrapper.classList.remove('active');
-        }
-    });
 }
