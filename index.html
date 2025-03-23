@@ -8,9 +8,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button class="menu-button">☰</button>
-    <div class="filters-wrapper">
-        <div class="filters">
+    <div class="top-bar">
+    <button class="menu-toggle">☰</button>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Поиск...">
+        <button id="clearSearch">&times;</button>
+    </div>
+    <div class="filters">
             <div class="filter active" data-filter="all">Все</div>
             <div class="filter" data-filter="movie">Фильмы</div>
             <div class="filter" data-filter="series">Сериалы</div>
