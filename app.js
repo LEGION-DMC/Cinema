@@ -45,13 +45,18 @@ window.handlePlay = function(url) {
     }
 };
 
-// Инициализация
-document.addEventListener('DOMContentLoaded', () => {
+function initApp() {
+    // Добавить обработчик меню
+    document.querySelector('.menu-toggle').addEventListener('click', () => {
+        document.querySelector('.filters').classList.toggle('active');
+    });
+    
+    // Остальной код инициализации
     renderMovies(movies);
     initFilters();
     initSearch();
     initModal();
-	initVideoPlayer(); // Добавить эту строку
+    initVideoPlayer();
 });
 
 // Рендер карточек
