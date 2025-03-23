@@ -3,41 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>MovieHub</title>
+    <!-- Название сайта -->
+	<title>LEGION</title>
+	<!-- Логотип сайта -->
     <link rel="icon" type="image/png" href="favicon.png">
+	<!-- Файл стилей -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Верхняя панель с адаптивным меню -->
+    <!-- Верхняя панель -->
     <div class="top-bar">
-    <div class="mobile-menu-btn">☰</div>
-    <div class="filters">
-        <div class="filter active" data-filter="all">Все</div>
-        <div class="filter" data-filter="movie">Фильмы</div>
-        <div class="filter" data-filter="series">Сериалы</div>
-        <div class="filter" data-filter="cartoon">Мультфильмы</div>
-        <div class="filter" data-filter="animated-series">Мультсериалы</div>
-        <div class="filter" data-filter="anime">Аниме</div>
-        <div class="filter" data-filter="show">Шоу</div>
-    </div>
-    <div class="filters-overlay"></div>
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Поиск...">
-        <button id="clearSearch">&times;</button>
-    </div>
-</div>
-
-    <!-- Основной контент -->
+		<!-- Кнопка категорий (для мобильной версии) -->
+		<div class="mobile-menu-btn">☰</div>
+		<!-- Категории -->
+		<div class="filters">
+			<div class="filter active" data-filter="all">Все</div>
+			<div class="filter" data-filter="movie">Фильмы</div>
+			<div class="filter" data-filter="series">Сериалы</div>
+			<div class="filter" data-filter="cartoon">Мультфильмы</div>
+			<div class="filter" data-filter="animated-series">Мультсериалы</div>
+			<div class="filter" data-filter="anime">Аниме</div>
+			<div class="filter" data-filter="show">Шоу</div>
+		</div>
+		<!-- Строка поиска -->
+		<div class="search-container">
+			<input type="text" id="searchInput" placeholder="Поиск...">
+			<button id="clearSearch">&times;</button>
+		</div>
+	</div>
+    <!-- Область материала -->
     <main class="content" id="content" role="main"></main>
-
-    <!-- Модальное окно -->
+    <!-- Окно материала -->
     <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
         <div class="modal" id="modalContent" role="dialog"></div>
     </div>
-
-    <!-- Подключение скриптов -->
+    <!-- Файлы скриптов -->
     <script src="data.js"></script>
-    <script src="app.js"></script>
-	
+    <script src="app.js"></script>	
 </body>
 </html>
