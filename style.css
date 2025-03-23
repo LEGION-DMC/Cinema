@@ -342,41 +342,6 @@ body {
     color: white;
 }
 
-/* Стили плеера */
-.video-player {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    max-width: 1000px;
-    z-index: 3000;
-    display: none;
-    background: #000;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-#hlsVideo {
-    width: 100%;
-    height: auto;
-    max-height: 80vh;
-}
-
-.close-player {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #e50914;
-    border: none;
-    color: white;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 1000;
-}
-
 .modal .info p {
     margin-top: 10px;
     margin-bottom: 15px;
