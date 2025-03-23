@@ -1,14 +1,12 @@
-function getCategoryLabel(category) {
-    const labels = {
-        movie: 'Фильм',
-        series: 'Сериал',
-        cartoon: 'Мультфильм',
-        'animated-series': 'Мультсериал',
-        anime: 'Аниме',
-	show: 'Шоу'
-    };
-    return labels[category];
-}
+const categories = {
+    all: { label: 'Все', class: 'category-all' },
+    movie: { label: 'Фильмы', class: 'category-movie' },
+    series: { label: 'Сериалы', class: 'category-series' },
+    cartoon: { label: 'Мультфильмы', class: 'category-cartoon' },
+    'animated-series': { label: 'Мультсериалы', class: 'category-animated-series' },
+    anime: { label: 'Аниме', class: 'category-anime' },
+    show: { label: 'Шоу', class: 'category-show' }
+};
 
 const movies = [
     {
@@ -81,3 +79,7 @@ const movies = [
     },
 	
 ];
+
+function getCategoryLabel(category) {
+    return categories[category]?.label || '';
+}
