@@ -4,49 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MovieHub</title>
-	<link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+    <!-- Верхняя панель -->
     <div class="top-bar">
-    <div class="mobile-menu">
-        <button class="menu-toggle">☰</button>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Поиск...">
-            <button id="clearSearch">&times;</button>
+        <!-- Мобильное меню -->
+        <div class="mobile-menu">
+            <button class="menu-toggle">☰</button>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Поиск...">
+                <button id="clearSearch">&times;</button>
+            </div>
         </div>
+
+        <!-- Фильтры (скрыты в мобильной версии) -->
+        <nav class="filters-menu">
+            <div class="filters">
+                <div class="filter active" data-filter="all">Все</div>
+                <div class="filter" data-filter="movie">Фильмы</div>
+                <div class="filter" data-filter="series">Сериалы</div>
+                <div class="filter" data-filter="cartoon">Мультфильмы</div>
+                <div class="filter" data-filter="animated-series">Мультсериалы</div>
+                <div class="filter" data-filter="anime">Аниме</div>
+                <div class="filter" data-filter="show">Шоу</div>
+            </div>
+        </nav>
     </div>
-	    
-        <div class="filters">
-            <div class="filter active" data-filter="all">Все</div>
-            <div class="filter" data-filter="movie">Фильмы</div>
-            <div class="filter" data-filter="series">Сериалы</div>
-            <div class="filter" data-filter="cartoon">Мультфильмы</div>
-            <div class="filter" data-filter="animated-series">Мультсериалы</div>
-            <div class="filter" data-filter="anime">Аниме</div>
-			<div class="filter" data-filter="show">Шоу</div>
-        </div>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Поиск...">
-            <button id="clearSearch">&times;</button>
-        </div>
-    </div>
-	
+
+    <!-- Основной контент -->
     <div class="content" id="content"></div>
-	
+
+    <!-- Модальное окно -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal" id="modalContent"></div>
     </div>
-	
-	<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-	<div id="videoPlayer" class="video-player">
-		<video id="hlsVideo" controls></video>
-		<button class="close-player">&times;</button>
-	</div>
-	
-    <script src="app.js"></script>
-	<script src="data.js"></script>
 
+    <!-- Видеоплеер -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <div id="videoPlayer" class="video-player">
+        <video id="hlsVideo" controls></video>
+        <button class="close-player">&times;</button>
+    </div>
+
+    <!-- Скрипты -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
