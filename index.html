@@ -2,47 +2,52 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MovieHub</title>
-	<link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
+    <!-- Дополнительные мета-теги -->
+    <meta name="description" content="Онлайн кинотеатр с большим выбором фильмов и сериалов">
+    <meta name="theme-color" content="#1a1a1a">
 </head>
 <body>
-
+    <!-- Верхняя панель с адаптивным меню -->
     <div class="top-bar">
-	<div class="mobile-menu-btn">☰</div>
-        <div class="filters">
-            <div class="filter active" data-filter="all">Все</div>
-            <div class="filter" data-filter="movie">Фильмы</div>
-            <div class="filter" data-filter="series">Сериалы</div>
-            <div class="filter" data-filter="cartoon">Мультфильмы</div>
-            <div class="filter" data-filter="animated-series">Мультсериалы</div>
-            <div class="filter" data-filter="anime">Аниме</div>
-	    <div class="filter" data-filter="show">Шоу</div>
-        </div>
+    <div class="mobile-menu-btn">☰</div>
+    <div class="filters">
+        <div class="filter active" data-filter="all">Все</div>
+        <div class="filter" data-filter="movie">Фильмы</div>
+        <div class="filter" data-filter="series">Сериалы</div>
+        <div class="filter" data-filter="cartoon">Мультфильмы</div>
+        <div class="filter" data-filter="animated-series">Мультсериалы</div>
+        <div class="filter" data-filter="anime">Аниме</div>
+        <div class="filter" data-filter="show">Шоу</div>
+    </div>
+    <div class="filters-overlay"></div>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Поиск...">
+        <button id="clearSearch">&times;</button>
+    </div>
+</div>
 
-	<div class="filters-overlay"></div>
-	    
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Поиск...">
-            <button id="clearSearch">&times;</button>
-        </div>
+    <!-- Основной контент -->
+    <main class="content" id="content" role="main"></main>
+
+    <!-- Модальное окно -->
+    <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+        <div class="modal" id="modalContent" role="dialog"></div>
     </div>
-	
-    <div class="content" id="content"></div>
-	
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal" id="modalContent"></div>
+
+    <!-- Видеоплеер -->
+    <div id="videoPlayer" class="video-player" aria-hidden="true">
+        <video id="hlsVideo" controls playsinline></video>
+        <button class="close-player" aria-label="Закрыть плеер">&times;</button>
     </div>
-	
-	<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-	<div id="videoPlayer" class="video-player">
-		<video id="hlsVideo" controls></video>
-		<button class="close-player">&times;</button>
-	</div>
-	
+
+    <!-- Подключение скриптов -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="data.js"></script>
     <script src="app.js"></script>
-	<script src="data.js"></script>
-
+	
 </body>
 </html>
