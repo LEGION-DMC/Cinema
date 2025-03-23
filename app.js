@@ -190,4 +190,21 @@ function showModal(movie) {
             </div>
         `;
     }
-	
+
+	function initMobileMenu() {
+    if (window.innerWidth < 769) {
+        const menuButton = document.querySelector('.menu-button');
+        const filtersWrapper = document.querySelector('.filters-wrapper');
+        
+        menuButton.addEventListener('click', () => {
+            filtersWrapper.classList.toggle('active');
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.filters-wrapper') && 
+                !e.target.closest('.menu-button')) {
+                filtersWrapper.classList.remove('active');
+            }
+        });
+    }
+}
