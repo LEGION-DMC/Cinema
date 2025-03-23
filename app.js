@@ -1,5 +1,6 @@
 let hlsInstance = null;
 
+// Инициализация приложения
 function initApp() {
     renderMovies(movies);
     initFilters();
@@ -9,23 +10,34 @@ function initApp() {
     initMobileMenu(); // Добавляем инициализацию мобильного меню
 }
 
+// Мобильное меню
 function initMobileMenu() {
     const menuBtn = document.querySelector('.mobile-menu-btn');
     const filters = document.querySelector('.filters');
     const modalOverlay = document.getElementById('modalOverlay');
 
-    menuBtn.addEventListener('click', () => {
+    menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
         filters.classList.toggle('active');
     });
 
-    // Закрытие меню при клике вне его области
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.filters') && 
             !e.target.closest('.mobile-menu-btn') &&
-            !modalOverlay.style.display === 'flex') {
+            modalOverlay.style.display !== 'flex') {
             filters.classList.remove('active');
+        }
+    });
+
+    // Закрытие меню при выборе фильтра
+    document.querySelectorAll('.filter').forEach(filter => {
+        filter.addEventListener('click', () => {
+            filters.classList.remove('active');
+        });
+    });
 }
-	    
+
+// Видеоплеер
 function initVideoPlayer() {
     const videoPlayer = document.getElementById('videoPlayer');
     const video = document.getElementById('hlsVideo');
@@ -71,15 +83,6 @@ window.handlePlay = function(url) {
     }
 };
 
-// Инициализация
-document.addEventListener('DOMContentLoaded', () => {
-    renderMovies(movies);
-    initFilters();
-    initSearch();
-    initModal();
-	initVideoPlayer(); // Добавить эту строку
-});
-
 // Рендер карточек
 function renderMovies(data) {
     const content = document.getElementById('content');
@@ -101,16 +104,30 @@ function renderMovies(data) {
 
 // Фильтрация
 function initFilters() {
-    document.querySelectorAll('.filter').forEach(filter => {
-        filter.addEventListener('click', () => {
-            document.querySelector('.filter.active').classList.remove('active');
-            filter.classList.add('active');
-            const category = filter.dataset.filter;
-            const filtered = category === 'all' 
-                ? movies 
-                : movies.filter(m => m.category === category);
-            renderMovies(filtered);
-        });
+    const filtersContainer = document.querySelector('.filters');
+    
+    // Генерация фильтров
+    filtersContainer.innerHTML = Object.entries(categories)
+        .map(([key, value]) => `
+            <div class="filter" data-filter="${key}">${value.label}</div>
+        `).join('');
+
+    filtersContainer.querySelector('.filter').classList.add('active');
+
+    // Обработчик кликов
+    filtersContainer.addEventListener('click', (e) => {
+        const filter = e.target.closest('.filter');
+        if (!filter) return;
+
+        document.querySelector('.filter.active').classList.remove('active');
+        filter.classList.add('active');
+        
+        const category = filter.dataset.filter;
+        const filtered = category === 'all' 
+            ? movies 
+            : movies.filter(m => m.category === category);
+        
+        renderMovies(filtered);
     });
 }
 
@@ -173,17 +190,17 @@ function showModal(movie) {
                 <h2>${movie.title}</h2>
                 ${movie.subtitle ? `<div class="modal-subtitle">${movie.subtitle}</div>` : ''}
             </div>
-            <div class="category-label">${getCategoryLabel(movie.category)}</div>
+            <div class="category-label ${getCategoryClass(movie.category)}">
+                ${getCategoryLabel(movie.category)}
+            </div>
     `;
 
-    // Описание
     html += movie.description.map(p => `<p>${p}</p>`).join('');
 
     if (movie.type === 'riser') {
         html += `<div class="release-date-label">Дата выхода: ${movie.releaseDate}</div>`;
     }
 
-    // Кнопки просмотра
     if (movie.type === 'single') {
         html += `<button class="watch-button" onclick="handlePlay('${movie.link}')">Смотреть</button>`;
     } else if (movie.type === 'seasons') {
@@ -221,3 +238,15 @@ function showModal(movie) {
     modalContent.innerHTML = html;
     modalOverlay.style.display = 'flex';
 }
+
+// Вспомогательные функции
+function getCategoryLabel(category) {
+    return categories[category]?.label || '';
+}
+
+function getCategoryClass(category) {
+    return categories[category]?.class || '';
+}
+
+// Запуск приложения
+document.addEventListener('DOMContentLoaded', initApp);
