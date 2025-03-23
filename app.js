@@ -7,81 +7,53 @@ function initApp() {
     initSearch();
     initModal();
     initVideoPlayer();
-    initMobileMenu(); // Добавляем инициализацию мобильного меню
+    initMobileMenu();
 }
 
 // Мобильное меню
 function initMobileMenu() {
     const menuBtn = document.querySelector('.mobile-menu-btn');
     const filters = document.querySelector('.filters');
-    const modalOverlay = document.getElementById('modalOverlay');
+    const overlay = document.querySelector('.filters-overlay');
 
     menuBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         filters.classList.toggle('active');
+        overlay.style.display = filters.classList.contains('active') ? 'block' : 'none';
     });
 
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.filters') && 
-            !e.target.closest('.mobile-menu-btn') &&
-            modalOverlay.style.display !== 'flex') {
-            filters.classList.remove('active');
-        }
-    });
-
-    // Закрытие меню при выборе фильтра
-    document.querySelectorAll('.filter').forEach(filter => {
-        filter.addEventListener('click', () => {
-            filters.classList.remove('active');
-        });
+    overlay.addEventListener('click', () => {
+        filters.classList.remove('active');
+        overlay.style.display = 'none';
     });
 }
 
-// Видеоплеер
-function initVideoPlayer() {
-    const videoPlayer = document.getElementById('videoPlayer');
-    const video = document.getElementById('hlsVideo');
-    const closeBtn = document.querySelector('.close-player');
-
-    closeBtn.addEventListener('click', () => {
-        videoPlayer.style.display = 'none';
-        if (hlsInstance) {
-            hlsInstance.destroy();
-            hlsInstance = null;
-        }
-    });
-}
-
-function playHLS(url) {
-    const video = document.getElementById('hlsVideo');
-    const videoPlayer = document.getElementById('videoPlayer');
+// Фильтрация
+function initFilters() {
+    const filtersContainer = document.querySelector('.filters');
     
-    if (hlsInstance) {
-        hlsInstance.destroy();
-    }
+    filtersContainer.innerHTML = Object.entries(categories)
+        .map(([key, value]) => `
+            <div class="filter" data-filter="${key}">${value.label}</div>
+        `).join('');
 
-    if (Hls.isSupported()) {
-        hlsInstance = new Hls();
-        hlsInstance.loadSource(url);
-        hlsInstance.attachMedia(video);
-        hlsInstance.on(Hls.Events.MANIFEST_PARSED, () => {
-            videoPlayer.style.display = 'block';
-            video.play();
-        });
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        video.src = url;
-        videoPlayer.style.display = 'block';
-        video.play();
-    }
+    filtersContainer.querySelector('.filter').classList.add('active');
+
+    filtersContainer.addEventListener('click', (e) => {
+        const filter = e.target.closest('.filter');
+        if (!filter) return;
+
+        document.querySelector('.filter.active').classList.remove('active');
+        filter.classList.add('active');
+        
+        const category = filter.dataset.filter;
+        const filtered = category === 'all' 
+            ? movies 
+            : movies.filter(m => m.category === category);
+        
+        renderMovies(filtered);
+    });
 }
-
-window.handlePlay = function(url) {
-    if (url.endsWith('.m3u8')) {
-        playHLS(url);
-    } else {
-        window.open(url, '_blank');
-    }
-};
 
 // Рендер карточек
 function renderMovies(data) {
@@ -100,35 +72,6 @@ function renderMovies(data) {
             </div>
         </div>
     `).join('');
-}
-
-// Фильтрация
-function initFilters() {
-    const filtersContainer = document.querySelector('.filters');
-    
-    // Генерация фильтров
-    filtersContainer.innerHTML = Object.entries(categories)
-        .map(([key, value]) => `
-            <div class="filter" data-filter="${key}">${value.label}</div>
-        `).join('');
-
-    filtersContainer.querySelector('.filter').classList.add('active');
-
-    // Обработчик кликов
-    filtersContainer.addEventListener('click', (e) => {
-        const filter = e.target.closest('.filter');
-        if (!filter) return;
-
-        document.querySelector('.filter.active').classList.remove('active');
-        filter.classList.add('active');
-        
-        const category = filter.dataset.filter;
-        const filtered = category === 'all' 
-            ? movies 
-            : movies.filter(m => m.category === category);
-        
-        renderMovies(filtered);
-    });
 }
 
 // Поиск
