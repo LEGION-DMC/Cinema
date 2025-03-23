@@ -1,13 +1,4 @@
-const categories = {
-    all: { label: 'Все', class: 'category-all' },
-    movie: { label: 'Фильмы', class: 'category-movie' },
-    series: { label: 'Сериалы', class: 'category-series' },
-    cartoon: { label: 'Мультфильмы', class: 'category-cartoon' },
-    'animated-series': { label: 'Мультсериалы', class: 'category-animated-series' },
-    anime: { label: 'Аниме', class: 'category-anime' },
-    show: { label: 'Шоу', class: 'category-show' }
-};
-
+// Материал
 const movies = [
     {
         id: 1,
@@ -76,7 +67,3 @@ const movies = [
     },
 	
 ];
-
-function getCategoryLabel(category) {
-    return categories[category]?.label || '';
-}
