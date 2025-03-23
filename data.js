@@ -46,7 +46,7 @@ const movies = [
 			]
 		},
 	]
-},
+	},
     {
         id: 4,
         title: 'John Wick',
@@ -64,6 +64,86 @@ const movies = [
 	    { name: 'Джон Уик 3: Парабеллум', link: '' },
             { name: 'Джон Уик 4', link: 'https://mediaaly.pro/tvseries/efbc147c4c16edf33fc1ceeaae39974273fd4c69/f89a0dc35a854a25868390b49ad26576:2025032213/1080.mp4:hls:manifest.m3u8'},
 	]
+    },
+	{
+        id: 5,
+        title: 'ФИЛЬМ',
+		subtitle: 'Гран-При 2025',
+		trailer: 'https://www.youtube.com/watch?v=OlEqHXRrcpc',
+        category: 'movie',
+        type: 'single',
+        poster: 'https://cs10.pikabu.ru/post_img/big/2019/08/02/8/1564751118197025415.png',
+        description: [
+		'Формула-1 — чемпионат мира по кольцевым автогонкам, который проводится ежегодно и состоит из этапов, в соответствии с техническими нормами, требованиями и правилами, установленными Международной автомобильной федерацией.',
+        ],
+		link: 'https://rutube.ru/u/versporta/videos/'
+    },
+	{
+        id: 6,
+        title: 'МУЛЬТФИЛЬМ',
+		trailer: 'https://www.youtube.com/watch?v=OlEqHXRrcpc',
+        category: 'cartoon',
+        type: 'single',
+        poster: 'https://lamcdn.net/lookatme.ru/post_image-image/3OQcRI_KJmdrhakj_RDZ_A-small.jpg',
+        description: [
+		'Формула-1 — чемпионат мира по кольцевым автогонкам, который проводится ежегодно и состоит из этапов, в соответствии с техническими нормами, требованиями и правилами, установленными Международной автомобильной федерацией.',
+        'Формула-1 — чемпионат мира по кольцевым автогонкам, который проводится ежегодно и состоит из этапов, в соответствии с техническими нормами, требованиями и правилами, установленными Международной автомобильной федерацией.',
+        'Формула-1 — чемпионат мира по кольцевым автогонкам, который проводится ежегодно и состоит из этапов, в соответствии с техническими нормами, требованиями и правилами, установленными Международной автомобильной федерацией.',
+        'Формула-1 — чемпионат мира по кольцевым автогонкам, который проводится ежегодно и состоит из этапов, в соответствии с техническими нормами, требованиями и правилами, установленными Международной автомобильной федерацией.',
+        'Формула-1 — чемпионат мира по кольцевым автогонкам, который проводится ежегодно и состоит из этапов, в соответствии с техническими нормами, требованиями и правилами, установленными Международной автомобильной федерацией.',
+        'Формула-1 — чемпионат мира по кольцевым автогонкам, который проводится ежегодно и состоит из этапов, в соответствии с техническими нормами, требованиями и правилами, установленными Международной автомобильной федерацией.',
+        'Формула-1 — чемпионат мира по кольцевым автогонкам, который проводится ежегодно и состоит из этапов, в соответствии с техническими нормами, требованиями и правилами, установленными Международной автомобильной федерацией.',
+        'Формула-1 — чемпионат мира по кольцевым автогонкам, который проводится ежегодно и состоит из этапов, в соответствии с техническими нормами, требованиями и правилами, установленными Международной автомобильной федерацией.',
+        ],
+		link: 'https://rutube.ru/u/versporta/videos/'
+    },
+	{
+        id: 7,
+        title: 'МУЛЬТСЕРИАЛ',
+		trailer: 'https://www.youtube.com/watch?v=OlEqHXRrcpc',
+        category: 'animated-series',
+        type: 'seasons',
+        poster: 'https://diskomir.ru/upload/resize_cache/webp/iblock/b9f/b9f8d2004ed5fdea66f12e6f6886dd75.webp',
+        description: [
+		'нормами, требованиями и правилами, установленными Международной автомобильной федерацией.',
+        ],
+		seasons: [
+        {
+            season: 1,
+            episodes: [
+				{ num: 1, link: 'https://mediaaly.pro/tvseries/0eaf38e6cde9eed6d6df15219e069fbd38ca1cf6/a25be3e9513ce2a1bb578a87455d19b0:2025032213/1080.mp4:hls:manifest.m3u8'},
+				{ num: 2, link: 'https://mediaaly.pro/tvseries/111d22a01b2b010a9b37b32b075974b1f4818d8d/4d076d0d2a0d5be32a36c0c1daab654e:2025032214/1080.mp4:hls:manifest.m3u8'},
+				{ num: 3, link: 'https://mediaaly.pro/tvseries/efbc147c4c16edf33fc1ceeaae39974273fd4c69/f89a0dc35a854a25868390b49ad26576:2025032213/1080.mp4:hls:manifest.m3u8'},
+				{ num: 3, link: 'https://mediaaly.pro/tvseries/efbc147c4c16edf33fc1ceeaae39974273fd4c69/f89a0dc35a854a25868390b49ad26576:2025032213/1080.mp4:hls:manifest.m3u8'},
+				{ num: 3, link: 'https://mediaaly.pro/tvseries/efbc147c4c16edf33fc1ceeaae39974273fd4c69/f89a0dc35a854a25868390b49ad26576:2025032213/1080.mp4:hls:manifest.m3u8'},
+				{ num: 3, link: 'https://mediaaly.pro/tvseries/efbc147c4c16edf33fc1ceeaae39974273fd4c69/f89a0dc35a854a25868390b49ad26576:2025032213/1080.mp4:hls:manifest.m3u8'},
+				{ num: 3, link: 'https://mediaaly.pro/tvseries/efbc147c4c16edf33fc1ceeaae39974273fd4c69/f89a0dc35a854a25868390b49ad26576:2025032213/1080.mp4:hls:manifest.m3u8'},
+				{ num: 3, link: 'https://mediaaly.pro/tvseries/efbc147c4c16edf33fc1ceeaae39974273fd4c69/f89a0dc35a854a25868390b49ad26576:2025032213/1080.mp4:hls:manifest.m3u8'},
+				{ num: 3, link: 'https://mediaaly.pro/tvseries/efbc147c4c16edf33fc1ceeaae39974273fd4c69/f89a0dc35a854a25868390b49ad26576:2025032213/1080.mp4:hls:manifest.m3u8'},
+				{ num: 3, link: 'https://mediaaly.pro/tvseries/efbc147c4c16edf33fc1ceeaae39974273fd4c69/f89a0dc35a854a25868390b49ad26576:2025032213/1080.mp4:hls:manifest.m3u8'},
+				{ num: 3, link: 'https://mediaaly.pro/tvseries/efbc147c4c16edf33fc1ceeaae39974273fd4c69/f89a0dc35a854a25868390b49ad26576:2025032213/1080.mp4:hls:manifest.m3u8'},
+				{ num: 3, link: 'https://mediaaly.pro/tvseries/efbc147c4c16edf33fc1ceeaae39974273fd4c69/f89a0dc35a854a25868390b49ad26576:2025032213/1080.mp4:hls:manifest.m3u8'},
+				{ num: 3, link: 'https://mediaaly.pro/tvseries/efbc147c4c16edf33fc1ceeaae39974273fd4c69/f89a0dc35a854a25868390b49ad26576:2025032213/1080.mp4:hls:manifest.m3u8'},
+				{ num: 3, link: 'https://mediaaly.pro/tvseries/efbc147c4c16edf33fc1ceeaae39974273fd4c69/f89a0dc35a854a25868390b49ad26576:2025032213/1080.mp4:hls:manifest.m3u8'},
+				{ num: 3, link: 'https://mediaaly.pro/tvseries/efbc147c4c16edf33fc1ceeaae39974273fd4c69/f89a0dc35a854a25868390b49ad26576:2025032213/1080.mp4:hls:manifest.m3u8'},
+				{ num: 3, link: 'https://mediaaly.pro/tvseries/efbc147c4c16edf33fc1ceeaae39974273fd4c69/f89a0dc35a854a25868390b49ad26576:2025032213/1080.mp4:hls:manifest.m3u8'},
+				{ num: 3, link: 'https://mediaaly.pro/tvseries/efbc147c4c16edf33fc1ceeaae39974273fd4c69/f89a0dc35a854a25868390b49ad26576:2025032213/1080.mp4:hls:manifest.m3u8'},
+				{ num: 3, link: 'https://mediaaly.pro/tvseries/efbc147c4c16edf33fc1ceeaae39974273fd4c69/f89a0dc35a854a25868390b49ad26576:2025032213/1080.mp4:hls:manifest.m3u8'},
+			]
+		},
+	]
+	},
+	{
+        id: 8,
+        title: 'Mortal Kombat',
+		trailer: 'https://rutube.ru/video/f63afe34bc29f2835af8affb8d1c3303/',
+        category: 'anime',
+        type: 'riser',
+        poster: 'https://preview.redd.it/83bumshoj6oe1.jpeg?auto=webp&s=8c212001dd262e141bd864d60d2d7d4e1ce0b8a4',
+		description: [ 
+		'Загадочный злодей замышляет открыть врата ада, и единственной надеждой на спасение человечества становится чертовски обаятельный охотник на демонов.',
+        ],
+		releaseDate: '3 апреля'
     },
 	
 ];
