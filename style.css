@@ -528,7 +528,7 @@ body {
 @media (max-width: 480px) {
     .content {
         grid-template-columns: 1fr;
-    }
+}
 
     .movie-poster {
         height: 150px;
