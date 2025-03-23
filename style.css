@@ -349,7 +349,7 @@ body {
     text-shadow: 0 0 10px rgba(229, 9, 20, 0.8);
 }
 
-/* Окно материала - Релизы */
+/* Окно материала - Релиз */
 .release-date-label {
     background: linear-gradient(45deg, #e50914, #b20710);
     border: 1px solid #ff414d;
@@ -362,7 +362,7 @@ body {
     color: white;
 }
 
-/* Окно материала - Трейлер */
+/* Окно материала - Кнопка Трейлера */
 .trailer-button {
     position: absolute;
     margin-top: 60px;
@@ -385,8 +385,113 @@ body {
     box-shadow: 0 2px 10px rgba(229, 9, 20, 0.5);
 }
 
-/* Мобильная версия */
-/* Кнопка Категорий - Скрыта на ПК */
+/* Верхняя панель - Кнопка Меню категорий - Скрыта для Полной версии */
 .mobile-menu-btn {
     display: none;
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) 
+{
+/* Верхняя панель */
+.top-bar {
+    position: fixed;
+    padding: 10px;
+}
+
+/* Верхняя панель - Категории - Скрыта на Мобильной версии */
+.filters {
+    display: none;
+}
+    
+/* Верхняя панель - Кнопка Меню категорий */
+.mobile-menu-btn {
+    display: block;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 2001; /* Выше фильтров */
+} 
+
+    
+/* Верхняя панель - Поисковая строка */
+#searchInput {
+    width: 380px;
+    padding: 0.5rem 2rem 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background-color: #333;
+    color: white;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Область материала */    
+.content {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 15px;
+    margin-top: 60px;
+}
+
+/* Материал - Постер */
+.movie-poster {
+    height: 280px;
+}    
+  
+/* Окно материала */    
+.modal {
+    flex-direction: column;
+    width: 90%;
+    height: 90%;
+}
+    
+/* Окно материала - Блок Постера и Трейлера*/          
+.modal-media {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+    
+/* Окно материала - Постер*/
+.modal-poster {
+    width: 180px;
+    height: 250px;
+    max-height: 300px;
+    border-radius: 5px;
+}   
+
+/* Окно материала - Блок Информации*/        
+.info {
+    margin-top: -20px;
+}
+    
+/* Окно материала - Блок Информации - Заголоаок и Подзаголовок */            
+.titles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 
+    
+/* Окно материала - Кнопка Трейлера */
+.trailer-button {
+    font-size: 0.8rem;
+    top: 220px;
+    left: 37%;
+}
+   
+/* Окно материала - Релиз */
+.release-date-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+   
+/* Окно материала - Адаптация расположение Эпизодов и Частей */    
+.episodes {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.franchise-container {
+    grid-template-columns: repeat(2, 1fr);
 }
