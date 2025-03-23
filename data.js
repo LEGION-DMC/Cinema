@@ -5,7 +5,7 @@ function getCategoryLabel(category) {
         cartoon: 'Мультфильм',
         'animated-series': 'Мультсериал',
         anime: 'Аниме',
-		show: 'Шоу'
+	show: 'Шоу'
     };
     return labels[category];
 }
