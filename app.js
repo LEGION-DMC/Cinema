@@ -1,4 +1,7 @@
-// Инициализация приложения
+// Инициализация скрипта
+document.addEventListener('DOMContentLoaded', initApp);
+
+// Инициализация функций
 function initApp() {
     renderMovies(movies);
     initFilters();
@@ -7,27 +10,12 @@ function initApp() {
     initMobileMenu();
 }
 
-// Мобильное меню
-function initMobileMenu() {
-    const menuBtn = document.querySelector('.mobile-menu-btn');
-    const filters = document.querySelector('.filters');
-    const overlay = document.querySelector('.filters-overlay');
-
-    if (menuBtn && filters && overlay) {
-        menuBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            filters.classList.toggle('active');
-            overlay.style.display = 'block';
-        });
-
-        overlay.addEventListener('click', () => {
-            filters.classList.remove('active');
-            overlay.style.display = 'none';
-        });
-    }
+// Обработка Категорий
+function getCategoryClass(category) {
+    return categories[category]?.class || '';
 }
 
-// Фильтрация
+// Вкладки Категорий - фильтрация материала по Категориям
 function initFilters() {
     const filtersContainer = document.querySelector('.filters');
     
@@ -53,7 +41,26 @@ function initFilters() {
     });
 }
 
-// Рендер карточек
+// Поисковая трока - поиск материала по Заголовку
+function initSearch() {
+    const searchInput = document.getElementById('searchInput');
+    const clearBtn = document.getElementById('clearSearch');
+
+    if (searchInput && clearBtn) {
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filtered = movies.filter(m => m.title.toLowerCase().includes(searchTerm));
+            renderMovies(filtered);
+        });
+
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            renderMovies(movies);
+        });
+    }
+}
+
+// Загрузка материала
 function renderMovies(data) {
     const content = document.getElementById('content');
     if (!content) return;
@@ -74,26 +81,7 @@ function renderMovies(data) {
     `).join('');
 }
 
-// Поиск
-function initSearch() {
-    const searchInput = document.getElementById('searchInput');
-    const clearBtn = document.getElementById('clearSearch');
-
-    if (searchInput && clearBtn) {
-        searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            const filtered = movies.filter(m => m.title.toLowerCase().includes(searchTerm));
-            renderMovies(filtered);
-        });
-
-        clearBtn.addEventListener('click', () => {
-            searchInput.value = '';
-            renderMovies(movies);
-        });
-    }
-}
-
-// Модальное окно
+// Окно материала
 function initModal() {
     const content = document.getElementById('content');
     const modalOverlay = document.getElementById('modalOverlay');
@@ -116,6 +104,7 @@ function initModal() {
     }
 }
 
+// Обработка материала -по категории и типу
 function showModal(movie) {
     const modalContent = document.getElementById('modalContent');
     const modalOverlay = document.getElementById('modalOverlay');
@@ -185,20 +174,3 @@ function showModal(movie) {
     modalContent.innerHTML = html;
     modalOverlay.style.display = 'flex';
 }
-
-// Вспомогательные функции
-function getCategoryLabel(category) {
-    return categories[category]?.label || '';
-}
-
-function getCategoryClass(category) {
-    return categories[category]?.class || '';
-}
-
-// Инициализация приложения
-document.addEventListener('DOMContentLoaded', initApp);
-
-// Глобальные обработчики
-window.handlePlay = function(url) {
-    if (url) window.open(url, '_blank');
-};
