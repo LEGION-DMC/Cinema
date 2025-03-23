@@ -539,6 +539,7 @@ body {
         padding: 0.5rem;
         z-index: 2001; /* Выше фильтров */
     }
+    
 
     .filters {
         display: none;
@@ -585,7 +586,14 @@ body {
         padding: 1rem;
         margin-top: 60px;
     }
-
+    
+    .modal-media {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    
     .movie-poster {
         height: 240px;
     }
@@ -603,6 +611,21 @@ body {
         max-height: 300px;
         border-radius: 5px;
     }
+    
+    .info {
+        margin-top: -20px;
+    }
+    .titles {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .release-date-label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
     .modal-close {
         top: 0.5rem;
@@ -613,6 +636,6 @@ body {
     .trailer-button {
         font-size: 0.8rem;
         top: 220px;
-        left: 14%;
+        left: 37%;
     }
 }
