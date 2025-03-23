@@ -99,6 +99,17 @@ function renderMovies(data) {
     `).join('');
 }
 
+// Категории
+const categories = {
+    all: { label: 'Все', class: 'category-all' },
+    movie: { label: 'Фильмы', class: 'category-movie' },
+    series: { label: 'Сериалы', class: 'category-series' },
+    cartoon: { label: 'Мультфильмы', class: 'category-cartoon' },
+    'animated-series': { label: 'Мультсериалы', class: 'category-animated-series' },
+    anime: { label: 'Аниме', class: 'category-anime' },
+    show: { label: 'Шоу', class: 'category-show' }
+};
+
 // Обработка материала по Категорий
 function getCategoryClass(category) {
     return categories[category]?.class || '';
