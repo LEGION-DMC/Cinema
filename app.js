@@ -1,5 +1,6 @@
 let hlsInstance = null;
 
+// Инициализация видеоплеера
 function initVideoPlayer() {
     const videoPlayer = document.getElementById('videoPlayer');
     const video = document.getElementById('hlsVideo');
@@ -14,6 +15,7 @@ function initVideoPlayer() {
     });
 }
 
+// Воспроизведение HLS
 function playHLS(url) {
     const video = document.getElementById('hlsVideo');
     const videoPlayer = document.getElementById('videoPlayer');
@@ -37,6 +39,7 @@ function playHLS(url) {
     }
 }
 
+// Обработчик ссылок
 window.handlePlay = function(url) {
     if (url.endsWith('.m3u8')) {
         playHLS(url);
@@ -45,18 +48,21 @@ window.handlePlay = function(url) {
     }
 };
 
-// Инициализация
+// Инициализация приложения
 document.addEventListener('DOMContentLoaded', () => {
     renderMovies(movies);
     initFilters();
     initSearch();
     initModal();
-	initVideoPlayer(); // Добавить эту строку
+    initVideoPlayer();
+    initMobileMenu();
 });
 
 // Рендер карточек
 function renderMovies(data) {
     const content = document.getElementById('content');
+    if (!content) return;
+
     content.innerHTML = data.map(movie => `
         <div class="movie-card ${movie.type === 'riser' ? 'riser' : ''}" data-id="${movie.id}">
             <img src="${movie.poster}" class="movie-poster" alt="${movie.title}">
@@ -75,9 +81,12 @@ function renderMovies(data) {
 
 // Фильтрация
 function initFilters() {
-    document.querySelectorAll('.filter').forEach(filter => {
+    const filters = document.querySelectorAll('.filter');
+    if (!filters.length) return;
+
+    filters.forEach(filter => {
         filter.addEventListener('click', () => {
-            document.querySelector('.filter.active').classList.remove('active');
+            document.querySelector('.filter.active')?.classList.remove('active');
             filter.classList.add('active');
             const category = filter.dataset.filter;
             const filtered = category === 'all' 
@@ -92,6 +101,7 @@ function initFilters() {
 function initSearch() {
     const searchInput = document.getElementById('searchInput');
     const clearBtn = document.getElementById('clearSearch');
+    if (!searchInput || !clearBtn) return;
 
     searchInput.addEventListener('input', (e) => {
         const searchTerm = e.target.value.toLowerCase();
@@ -111,6 +121,7 @@ function initSearch() {
 function initModal() {
     const content = document.getElementById('content');
     const modalOverlay = document.getElementById('modalOverlay');
+    if (!content || !modalOverlay) return;
 
     content.addEventListener('click', (e) => {
         const card = e.target.closest('.movie-card');
@@ -128,8 +139,11 @@ function initModal() {
     });
 }
 
+// Показ модального окна
 function showModal(movie) {
     const modalContent = document.getElementById('modalContent');
+    if (!modalContent) return;
+
     let html = `
         <div class="modal-close">&times;</div>
         <div class="modal-media">
@@ -193,5 +207,38 @@ function showModal(movie) {
 
     html += '</div>';
     modalContent.innerHTML = html;
-    modalOverlay.style.display = 'flex';
+    document.getElementById('modalOverlay').style.display = 'flex';
+}
+
+// Мобильное меню
+function initMobileMenu() {
+    if (window.innerWidth < 769) {
+        const menuButton = document.querySelector('.menu-button');
+        const filtersWrapper = document.querySelector('.filters-wrapper');
+        if (!menuButton || !filtersWrapper) return;
+
+        menuButton.addEventListener('click', () => {
+            filtersWrapper.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.filters-wrapper') && 
+                !e.target.closest('.menu-button')) {
+                filtersWrapper.classList.remove('active');
+            }
+        });
+    }
+}
+
+// Получение метки категории
+function getCategoryLabel(category) {
+    const labels = {
+        movie: 'Фильм',
+        series: 'Сериал',
+        cartoon: 'Мультфильм',
+        'animated-series': 'Мультсериал',
+        anime: 'Аниме',
+        show: 'Шоу'
+    };
+    return labels[category] || '';
 }
