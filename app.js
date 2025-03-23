@@ -195,3 +195,19 @@ function showModal(movie) {
     modalContent.innerHTML = html;
     modalOverlay.style.display = 'flex';
 }
+function initMobileMenu() {
+    const menuButton = document.querySelector('.menu-button');
+    const filtersWrapper = document.querySelector('.filters-wrapper');
+    
+    menuButton.addEventListener('click', () => {
+        filtersWrapper.classList.toggle('active');
+    });
+    
+    // Закрытие меню при клике вне его
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.filters-wrapper') && 
+            !e.target.closest('.menu-button')) {
+            filtersWrapper.classList.remove('active');
+        }
+    });
+}
