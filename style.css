@@ -524,16 +524,20 @@ body {
     }
 }
 
-/* Для экранов меньше 480px */
+/* Мобильная версия */
 @media (max-width: 768px) {
-    .content {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-        padding: 1rem;
+    /* Верхняя панель */
+    .top-bar {
+        position: fixed;
+        padding: 0.5rem 1rem;
     }
 
-    .movie-poster {
-        height: 200px;
+    .mobile-menu-btn {
+        display: block;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        z-index: 2001; /* Выше фильтров */
     }
 
     .filters {
@@ -565,22 +569,48 @@ body {
         z-index: 1999;
     }
 
-    .mobile-menu-btn {
+    .filters-overlay.active {
         display: block;
-        font-size: 1.5rem;
-        cursor: pointer;
-        padding: 0.5rem;
     }
-}
 
-/* Добавьте в style.css */
-.filters-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 1999;
+    .filter {
+        margin: 0.5rem 0;
+        padding: 1rem;
+    }
+
+    /* Контент */
+    .content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding: 1rem;
+        margin-top: 60px; /* Учитываем высоту верхней панели */
+    }
+
+    .movie-poster {
+        height: 240px;
+    }
+
+    /* Модальное окно */
+    .modal {
+        flex-direction: column;
+        width: 95%;
+        padding: 1rem;
+    }
+
+    .modal-poster {
+        width: 100%;
+        height: auto;
+        max-height: 300px;
+    }
+
+    .modal-close {
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+
+    /* Трейлер */
+    .trailer-button {
+        font-size: 0.8rem;
+        padding: 6px 15px;
+    }
 }
