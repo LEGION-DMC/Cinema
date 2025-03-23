@@ -25,7 +25,7 @@ body {
     z-index: 1000;
 }
 
-/* Верхняя панель - Категории */
+/* Верхняя панель - Вкладки Категорий */
 .filters {
     display: flex;
     gap: 5px;
@@ -195,8 +195,28 @@ body {
     color: white;
 }
 
-.category-label.category-series {
+.category-label.category-movie {
     background-color: blue;
+}
+
+.category-label.category-series {
+    background-color: RoyalBlue;
+}
+
+.category-label.category-cartoon {
+    background-color: orange;
+}
+
+.category-label.category-animated-series {
+    background-color: ForestGreen;
+}
+
+.category-label.category-anime {
+    background-color: red;
+}
+
+.category-label.category-show {
+    background-color: DimGray;
 }
 
 /* Окно материала - Постер */
