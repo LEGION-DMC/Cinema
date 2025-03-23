@@ -402,25 +402,27 @@ body {
     display: none;
 }
 
-.filters {
-    transition: all 0.3s ease;
-}
-
-.filters.active + .filters-overlay {
+.filters-overlay {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 1999;
+}
+
+.filters-overlay.active {
+    display: block;
 }
 
 @media (max-width: 768px) {
     /* Верхняя панель */
     .top-bar {
-        position: relative;
+        position: fixed;
         padding: 0.5rem 1rem;
+        z-index: 2001;
     }
 
     .mobile-menu-btn {
@@ -428,10 +430,10 @@ body {
         font-size: 1.5rem;
         cursor: pointer;
         padding: 0.5rem;
+        z-index: 2002;
     }
 
     .filters {
-        display: none;
         position: fixed;
         top: 0;
         left: -250px;
@@ -442,6 +444,8 @@ body {
         padding: 1rem;
         transition: left 0.3s ease;
         z-index: 2000;
+        display: flex !important; /* Важное изменение */
+        overflow-y: auto;
     }
 
     .filters.active {
@@ -451,41 +455,29 @@ body {
     .filter {
         margin: 0.5rem 0;
         padding: 1rem;
+        white-space: nowrap;
     }
 
     /* Контент */
     .content {
+        margin-top: 60px;
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
         padding: 1rem;
     }
 
-    .movie-poster {
-        height: 200px;
+    /* Поиск */
+    #searchInput {
+        width: 200px;
+        z-index: 2001;
     }
 
-    /* Модальное окно */
-    .modal {
-        flex-direction: column;
-        width: 95%;
-        padding: 1rem;
-    }
-
-    .modal-poster {
-        width: 100%;
-        height: auto;
-        max-height: 300px;
-    }
-
-    .modal-close {
-        top: 0.5rem;
-        right: 0.5rem;
-    }
-
-    /* Трейлер */
+    /* Модальное окно - трейлер */
     .trailer-button {
-        font-size: 0.8rem;
-        padding: 6px 15px;
+        top: 220px;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 0;
     }
 }
 
