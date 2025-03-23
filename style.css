@@ -436,7 +436,7 @@ body {
 /* Мобильная версия */
 .mobile-menu-btn {
     display: none; /* Скрыто по умолчанию */
-
+}
 .filters {
     transition: all 0.3s ease;
 }
