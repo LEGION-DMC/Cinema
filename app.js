@@ -46,6 +46,33 @@ window.handlePlay = function(url) {
 };
 
 // Инициализация
+function initApp() {
+    renderMovies(movies);
+    initFilters();
+    initSearch();
+    initModal();
+    initVideoPlayer();
+    initMobileMenu(); // Добавляем инициализацию мобильного меню
+}
+
+function initMobileMenu() {
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const filters = document.querySelector('.filters');
+    const modalOverlay = document.getElementById('modalOverlay');
+
+    menuBtn.addEventListener('click', () => {
+        filters.classList.toggle('active');
+    });
+
+    // Закрытие меню при клике вне его области
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.filters') && 
+            !e.target.closest('.mobile-menu-btn') &&
+            !modalOverlay.style.display === 'flex') {
+            filters.classList.remove('active');
+        }
+    });
+}
 document.addEventListener('DOMContentLoaded', () => {
     renderMovies(movies);
     initFilters();
