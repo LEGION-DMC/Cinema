@@ -1,3 +1,5 @@
+function initApp() {
+	
 let hlsInstance = null;
 
 function initVideoPlayer() {
@@ -190,8 +192,7 @@ function showModal(movie) {
             </div>
         `;
     }
-
-function initApp() {
+	
     initMobileMenu();
 }
 	
