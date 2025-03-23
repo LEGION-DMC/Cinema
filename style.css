@@ -520,3 +520,21 @@ body {
         padding: 6px 15px;
     }
 }
+
+/* Для всех кнопок */
+button {
+    min-width: 44px;
+    min-height: 44px;
+}
+
+.movie-title {
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.modal h2 {
+    font-size: 1.5rem;
+}
+
