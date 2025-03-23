@@ -148,12 +148,12 @@ body {
     gap: 10px;
 }
 
-.modal .info{
+.modal .info {
     font-size: 20px;
     color: red;
 }
 
-.modal .category-label{
+.modal .category-label {
     margin-top: 12px;
     font-size: 10px;
     padding: 5px;
@@ -204,7 +204,6 @@ body {
     flex-wrap: wrap;
 }
 
-
 .episode-button, .part-button {
     padding: 5px;
     background-color: #444;
@@ -225,8 +224,8 @@ body {
     border-radius: 5px;
     font-weight: 700;
     text-transform: uppercase;
-    background-color: grey; 
-    border-color: #D32F2F; 
+    background-color: grey;
+    border-color: #D32F2F;
 }
 
 .season {
@@ -299,8 +298,8 @@ body {
 
 /* Стили для грядущих релизов */
 .movie-card.riser {
-    position: relative; /* Добавляем относительное позиционирование */
-    overflow: hidden; /* Обрезаем выходящие за границы элементы */
+    position: relative;
+    overflow: hidden;
 }
 
 .movie-card.riser .poster-overlay {
@@ -435,8 +434,9 @@ body {
 
 /* Мобильная версия */
 .mobile-menu-btn {
-    display: none; /* Скрыто по умолчанию */
+    display: none;
 }
+
 .filters {
     transition: all 0.3s ease;
 }
@@ -450,7 +450,7 @@ body {
     background: rgba(0,0,0,0.5);
     z-index: 1999;
 }
-    
+
 @media (max-width: 768px) {
     /* Верхняя панель */
     .top-bar {
@@ -525,12 +525,50 @@ body {
 }
 
 /* Для экранов меньше 480px */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .content {
-        grid-template-columns: 1fr;
-}
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding: 1rem;
+    }
 
     .movie-poster {
-        height: 150px;
+        height: 200px;
+    }
+
+    .filters {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100vh;
+        background: #2d2d2d;
+        flex-direction: column;
+        padding: 1rem;
+        transition: left 0.3s ease;
+        z-index: 2000;
+    }
+
+    .filters.active {
+        left: 0;
+    }
+
+    .filters-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 1999;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
     }
 }
