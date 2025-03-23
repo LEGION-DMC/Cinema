@@ -1,0 +1,434 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+/* Верхняя панель */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #2d2d2d;
+    z-index: 1000;
+}
+
+.filters {
+    display: flex;
+    gap: 5px;
+}
+
+.filter {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.filter::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #e50914;
+    transition: width 0.3s ease;
+}
+
+.filter.active::after,
+.filter:hover::after {
+    width: 100%;
+}
+
+.filter.active {
+    color: #e50914;
+}
+
+/* Поисковая строка */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#searchInput {
+    width: 300px;
+    padding: 0.5rem 2rem 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background-color: #333;
+    color: white;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+    border-color: #e50914;
+}
+
+#clearSearch {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+}
+
+#clearSearch:hover {
+    color: #e50914;
+}
+
+/* Контент */
+.content {
+    margin-top: 40px;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+.movie-card {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
+.movie-poster {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.movie-title {
+    text-align: center;
+    font-size: 15px;
+}
+
+/* Модальное окно */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal {
+    background-color: #2d2d2d;
+    padding: 1rem;
+    border-radius: 8px;
+    max-width: 800px;
+    width: auto;
+    position: relative;
+    display: flex;
+    gap: 10px;
+}
+
+.modal .info{
+    font-size: 20px;
+    color: red;
+}
+
+.modal .category-label{
+    margin-top: 12px;
+    font-size: 10px;
+    padding: 5px;
+    color: white;
+}
+
+.modal-poster {
+    width: 250px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 5px;
+    right: 12px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+    color: #e50914;
+}
+
+.watch-button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 1rem;
+    background-color: #e50914;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+}
+
+.watch-button:hover {
+    background-color: #b20710;
+}
+
+.seasons-container {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.episode-button, .part-button {
+    padding: 5px;
+    background-color: #444;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.episode-button:hover, .part-button:hover {
+    background-color: #e50914;
+}
+
+/* Стили категорий */
+.category-label {
+    display: inline-block;
+    border-radius: 5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: grey; 
+    border-color: #D32F2F; 
+}
+
+.season {
+    margin-bottom: 5px;
+    width: 100%;
+    background-color: #222;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.season h4 {
+    margin-bottom: 5px;
+    font-size: 18px;
+    color: white;
+}
+
+.episodes {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.3rem;
+}
+
+.franchise-container {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+.part-button {
+    padding: 10px;
+    background-color: #2d2d2d;
+    border: 2px solid #e50914;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.part-button:hover {
+    background-color: #e50914;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+}
+
+/* Адаптивность для франшиз */
+@media (max-width: 768px) {
+    .franchise-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .franchise-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .episodes {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .episodes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Стили для грядущих релизов */
+.movie-card.riser {
+    position: relative; /* Добавляем относительное позиционирование */
+    overflow: hidden; /* Обрезаем выходящие за границы элементы */
+}
+
+.movie-card.riser .poster-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.movie-card.riser:hover .poster-overlay {
+    opacity: 1;
+}
+
+.coming-soon {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(229, 9, 20, 0.8);
+}
+
+.release-date-label {
+    background: linear-gradient(45deg, #e50914, #b20710);
+    border: 1px solid #ff414d;
+    margin: 10px 0px;
+    padding: 8px;
+    border-radius: 8px;
+    font-weight: bold;
+    display: inline-block;
+    font-size: 15px;
+    color: white;
+}
+
+/* Стили плеера */
+.video-player {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 1000px;
+    z-index: 3000;
+    display: none;
+    background: #000;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#hlsVideo {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+}
+
+.close-player {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #e50914;
+    border: none;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.modal .info p {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    line-height: 1.1;
+    font-size: 14px;
+    color: #ddd;
+}
+
+.modal .info p:first-child {
+    margin-top: 0;
+}
+
+.modal .info p:last-child {
+    margin-bottom: 0;
+}
+
+/* Подзаголовок в карточке */
+.movie-subtitle {
+    color: #9999;
+    text-align: center;
+    margin-top: 3px;
+}
+
+/* Подзаголовок в модальном окне */
+.modal-subtitle {
+    font-size: 15px;
+    color: #999;
+}
+
+.movie-subtitle {
+    font-size: 12px;
+}
+
+.trailer-button {
+    position: absolute;
+    margin-top: 60px;
+    left: 10%;
+    top: 320px;
+    background: #e50914;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.trailer-button:hover {
+    background: #b20710;
+    box-shadow: 0 2px 10px rgba(229, 9, 20, 0.5);
+}
