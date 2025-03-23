@@ -10,11 +10,6 @@ function initApp() {
     initMobileMenu();
 }
 
-// Обработка Категорий
-function getCategoryClass(category) {
-    return categories[category]?.class || '';
-}
-
 // Вкладки Категорий - фильтрация материала по Категориям
 function initFilters() {
     const filtersContainer = document.querySelector('.filters');
@@ -60,27 +55,6 @@ function initSearch() {
     }
 }
 
-// Загрузка материала
-function renderMovies(data) {
-    const content = document.getElementById('content');
-    if (!content) return;
-
-    content.innerHTML = data.map(movie => `
-        <div class="movie-card ${movie.type === 'riser' ? 'riser' : ''}" data-id="${movie.id}">
-            <img src="${movie.poster}" class="movie-poster" alt="${movie.title}">
-            ${movie.type === 'riser' ? `
-                <div class="poster-overlay">
-                    <div class="coming-soon">Скоро</div>
-                </div>
-            ` : ''}
-            <div class="titles">
-                <div class="movie-title">${movie.title}</div>
-                ${movie.subtitle ? `<div class="movie-subtitle">${movie.subtitle}</div>` : ''}
-            </div>
-        </div>
-    `).join('');
-}
-
 // Окно материала
 function initModal() {
     const content = document.getElementById('content');
@@ -104,7 +78,37 @@ function initModal() {
     }
 }
 
-// Обработка материала -по категории и типу
+// Загрузка материала
+function renderMovies(data) {
+    const content = document.getElementById('content');
+    if (!content) return;
+
+    content.innerHTML = data.map(movie => `
+        <div class="movie-card ${movie.type === 'riser' ? 'riser' : ''}" data-id="${movie.id}">
+            <img src="${movie.poster}" class="movie-poster" alt="${movie.title}">
+            ${movie.type === 'riser' ? `
+                <div class="poster-overlay">
+                    <div class="coming-soon">Скоро</div>
+                </div>
+            ` : ''}
+            <div class="titles">
+                <div class="movie-title">${movie.title}</div>
+                ${movie.subtitle ? `<div class="movie-subtitle">${movie.subtitle}</div>` : ''}
+            </div>
+        </div>
+    `).join('');
+}
+
+// Обработка материала по Категорий
+function getCategoryClass(category) {
+    return categories[category]?.class || '';
+}
+
+function getCategoryLabel(category) {
+    return categories[category]?.label || '';
+}
+
+// Обработка материала - по типу
 function showModal(movie) {
     const modalContent = document.getElementById('modalContent');
     const modalOverlay = document.getElementById('modalOverlay');
