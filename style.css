@@ -462,7 +462,7 @@ body {
 .modal {
     flex-direction: column;
     width: 90%;
-    height: 90%;
+    height: 60%;
 }
     
 /* Окно материала - Блок Постера и Трейлера*/          
